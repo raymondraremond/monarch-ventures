@@ -1,0 +1,103 @@
+export const SITE = {
+  name: "Monarch's Mega Resources",
+  shortName: "Monarch's",
+  legal: "Monarch's Mega Resources Nigeria Limited",
+  tagline: "Excellence in Every Endeavour",
+  description:
+    "A premium Nigerian conglomerate delivering luxury furniture, world-class fishery, modern piggery and elite laundry services.",
+  phone: "+234 800 000 0000",
+  whatsapp: "2348000000000",
+  email: "hello@monarchsmega.ng",
+  address: "Plot 12, Admiralty Way, Lekki Phase 1, Lagos, Nigeria",
+  socials: {
+    instagram: "https://instagram.com",
+    facebook: "https://facebook.com",
+    linkedin: "https://linkedin.com",
+    x: "https://x.com",
+  },
+};
+
+export const SERVICES = [
+  {
+    slug: "furniture",
+    name: "Furniture",
+    short: "Bespoke luxury furniture for refined homes & offices.",
+    description:
+      "Hand-crafted bespoke furniture marrying African craftsmanship with contemporary design. From statement sofas to executive workspaces, every piece is built to outlast trends.",
+    image: "hero-furniture",
+    accent: "Bespoke craftsmanship",
+    bullets: [
+      "Custom design consultation",
+      "Premium hardwood & imported upholstery",
+      "Residential, hospitality & corporate fit-outs",
+      "Nationwide delivery & installation",
+    ],
+    tiers: [
+      { name: "Essential", price: "₦450,000", features: ["1 statement piece", "Standard finish", "Lagos delivery"] },
+      { name: "Signature", price: "₦1,250,000", features: ["Full room set", "Premium fabrics", "White-glove install"] },
+      { name: "Atelier", price: "Bespoke", features: ["End-to-end interior", "Imported materials", "Lifetime care"] },
+    ],
+  },
+  {
+    slug: "fishery",
+    name: "Fishery",
+    short: "Sustainable aquaculture and premium fresh catch.",
+    description:
+      "A modern aquaculture operation supplying premium catfish, tilapia and processed fish to homes, restaurants and exporters across Nigeria — with full traceability.",
+    image: "hero-fishery",
+    accent: "Farm to table",
+    bullets: [
+      "Live, fresh & smoked fish",
+      "Wholesale & retail packages",
+      "Aquaculture consulting & setup",
+      "Cold-chain delivery",
+    ],
+    tiers: [
+      { name: "Household", price: "₦18,000 / 5kg", features: ["Fresh catfish", "Vacuum sealed", "Same-day delivery"] },
+      { name: "Restaurant", price: "₦150,000 / 50kg", features: ["Custom cuts", "Weekly schedule", "Cold-chain"] },
+      { name: "Wholesale", price: "Custom", features: ["1 ton+ orders", "Export grade", "Documentation"] },
+    ],
+  },
+  {
+    slug: "piggery",
+    name: "Piggery",
+    short: "Modern pig farming & ethically raised pork.",
+    description:
+      "World-class breeding, modern housing and clean-feed standards produce healthy, premium pork and breeding stock for farmers and processors nationwide.",
+    image: "hero-piggery",
+    accent: "Ethically raised",
+    bullets: [
+      "Live weaners & breeding stock",
+      "Premium fresh pork cuts",
+      "Farm management consulting",
+      "Bulk B2B supply",
+    ],
+    tiers: [
+      { name: "Weaner", price: "₦35,000", features: ["8–10 weeks", "Vaccinated", "Health certificate"] },
+      { name: "Breeder", price: "₦180,000", features: ["Proven genetics", "Records included", "Delivery option"] },
+      { name: "Bulk Pork", price: "₦3,200 / kg", features: ["Fresh cuts", "Cold-chain", "Restaurant friendly"] },
+    ],
+  },
+  {
+    slug: "laundry",
+    name: "Laundry Services",
+    short: "Hotel-grade laundry, dry cleaning & pickup.",
+    description:
+      "From a single suit to an entire hotel — our atelier-grade laundry delivers immaculate finishes with eco-conscious processes and seamless pickup & delivery.",
+    image: "hero-laundry",
+    accent: "Pickup & delivery",
+    bullets: [
+      "Residential & commercial",
+      "Dry cleaning & ironing",
+      "Hotel & hospitality contracts",
+      "Same-day express service",
+    ],
+    tiers: [
+      { name: "Essentials", price: "₦8,500 / bag", features: ["Up to 10 items", "48hr turnaround", "Free pickup"] },
+      { name: "Executive", price: "₦22,000 / month", features: ["Weekly service", "Dry cleaning incl.", "Priority"] },
+      { name: "Hospitality", price: "Custom", features: ["Hotel contracts", "Daily collection", "On-site account mgr"] },
+    ],
+  },
+] as const;
+
+export type ServiceSlug = (typeof SERVICES)[number]["slug"];
