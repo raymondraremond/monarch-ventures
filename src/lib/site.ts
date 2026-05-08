@@ -98,6 +98,6 @@ export const SERVICES = [
       { name: "Hospitality", price: "Custom", features: ["Hotel contracts", "Daily collection", "On-site account mgr"] },
     ],
   },
-] as const;
+];
 
 export type ServiceSlug = (typeof SERVICES)[number]["slug"];
