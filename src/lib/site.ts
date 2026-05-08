@@ -17,7 +17,18 @@ export const SITE = {
   },
 };
 
-export const SERVICES = [
+export type Service = {
+  slug: "furniture" | "fishery" | "piggery" | "laundry";
+  name: string;
+  short: string;
+  description: string;
+  image: "hero-furniture" | "hero-fishery" | "hero-piggery" | "hero-laundry";
+  accent: string;
+  bullets: string[];
+  tiers: { name: string; price: string; features: string[] }[];
+};
+
+export const SERVICES: Service[] = [
   {
     slug: "furniture",
     name: "Furniture",
@@ -100,4 +111,4 @@ export const SERVICES = [
   },
 ];
 
-export type ServiceSlug = (typeof SERVICES)[number]["slug"];
+export type ServiceSlug = Service["slug"];
