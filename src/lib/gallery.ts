@@ -1,5 +1,10 @@
 // Real photographs sourced from Unsplash (free to use, attribution appreciated).
 // Grouped per Monarch's division.
+import fisheryPond from "@/assets/hero-fishery.jpg";
+import fisheryLiveCatfish from "@/assets/gallery/fishery-live-catfish-pond.jpg";
+import fisheryFeedingPond from "@/assets/gallery/fishery-feeding-catfish-pond.jpg";
+import fisheryAquaculturePonds from "@/assets/gallery/fishery-aquaculture-ponds.jpg";
+import fisheryPondMonitoring from "@/assets/gallery/fishery-pond-monitoring.jpg";
 
 export type GalleryCategory = "furniture" | "fishery" | "piggery" | "laundry";
 
@@ -25,14 +30,14 @@ export const GALLERY: GalleryImage[] = [
   { src: u("photo-1592078615290-033ee584e267"), title: "Marble & Brass Console", category: "furniture", ratio: "tall" },
 
   // ── Fishery ─────────────────────────────────────────────────
-  { src: u("photo-1559827260-dc66d52bef19"), title: "Fresh Catch", category: "fishery", ratio: "tall" },
-  { src: u("photo-1545816250-0a40b9456b1f"), title: "Aquaculture Ponds", category: "fishery", ratio: "short" },
-  { src: u("photo-1535591273668-578e31182c4f"), title: "Sunrise Harvest", category: "fishery", ratio: "short" },
-  { src: u("photo-1513125370-3460ebe3401b"), title: "Catfish Stock", category: "fishery", ratio: "tall" },
-  { src: u("photo-1574781330855-d0db8cc6a79c"), title: "Hatchery", category: "fishery", ratio: "short" },
-  { src: u("photo-1611171711791-b34b41b1c1a2"), title: "Premium Tilapia", category: "fishery", ratio: "tall" },
-  { src: u("photo-1565280654386-466ec8a7654c"), title: "Cold Storage", category: "fishery", ratio: "short" },
-  { src: u("photo-1530053969600-caed2596d242"), title: "Wholesale Supply", category: "fishery", ratio: "tall" },
+  { src: fisheryPond, title: "Live Catfish Pond", category: "fishery", ratio: "short" },
+  { src: fisheryLiveCatfish, title: "Catfish Pond Harvest", category: "fishery", ratio: "tall" },
+  { src: fisheryFeedingPond, title: "Pond Feeding Activity", category: "fishery", ratio: "short" },
+  { src: fisheryAquaculturePonds, title: "Aquaculture Pond System", category: "fishery", ratio: "short" },
+  { src: fisheryPondMonitoring, title: "Fish Growth Monitoring", category: "fishery", ratio: "tall" },
+  { src: fisheryLiveCatfish, title: "Live Stock Handling", category: "fishery", ratio: "square" },
+  { src: fisheryFeedingPond, title: "Working Fish Pond", category: "fishery", ratio: "tall" },
+  { src: fisheryAquaculturePonds, title: "Modern Pond Layout", category: "fishery", ratio: "short" },
 
   // ── Piggery ─────────────────────────────────────────────────
   { src: u("photo-1593179357196-705d7578430a"), title: "Free-Range Stock", category: "piggery", ratio: "short" },
