@@ -96,9 +96,8 @@
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
-    background-image:
-      radial-gradient(ellipse at top, oklch(0.78 0.14 80 / 0.06), transparent 60%),
-      radial-gradient(ellipse at bottom, oklch(0.78 0.14 80 / 0.04), transparent 60%);
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
