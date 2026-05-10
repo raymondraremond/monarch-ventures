@@ -83,7 +83,18 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-foreground/70">
             <li className="flex gap-3">
               <MapPin className="w-4 h-4 mt-0.5 text-primary shrink-0" />
-              <span>{SITE.address}</span>
+              <div className="space-y-2">
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.25em] text-primary/80">{SITE.headquarters.label}</div>
+                  <div>{SITE.headquarters.value}</div>
+                </div>
+                {SITE.branches.map((b) => (
+                  <div key={b.label}>
+                    <div className="text-[10px] uppercase tracking-[0.25em] text-primary/80">{b.label}</div>
+                    <div>{b.value}</div>
+                  </div>
+                ))}
+              </div>
             </li>
             <li className="flex gap-3">
               <Phone className="w-4 h-4 mt-0.5 text-primary shrink-0" />
@@ -91,7 +102,7 @@ export function Footer() {
             </li>
             <li className="flex gap-3">
               <Mail className="w-4 h-4 mt-0.5 text-primary shrink-0" />
-              <a href={`mailto:${SITE.email}`} className="hover:text-primary">{SITE.email}</a>
+              <a href={`mailto:${SITE.email}`} className="hover:text-primary break-all">{SITE.email}</a>
             </li>
           </ul>
         </div>

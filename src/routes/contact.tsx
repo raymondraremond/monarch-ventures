@@ -42,7 +42,13 @@ function ContactPage() {
       <section className="container-luxe pb-24 grid lg:grid-cols-[1fr_1.2fr] gap-10">
         <div className="space-y-6">
           {[
-            { Icon: MapPin, label: "Visit", value: SITE.address, href: `https://maps.google.com/?q=${encodeURIComponent(SITE.address)}` },
+            { Icon: MapPin, label: SITE.headquarters.label, value: SITE.headquarters.value, href: `https://maps.google.com/?q=${encodeURIComponent(SITE.headquarters.value)}` },
+            ...SITE.branches.map((b) => ({
+              Icon: MapPin,
+              label: b.label,
+              value: b.value,
+              href: `https://maps.google.com/?q=${encodeURIComponent(b.value)}`,
+            })),
             { Icon: Phone, label: "Call", value: SITE.phone, href: `tel:${SITE.phone}` },
             { Icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
             { Icon: MessageCircle, label: "WhatsApp", value: "Chat instantly", href: `https://wa.me/${SITE.whatsapp}` },
@@ -57,17 +63,17 @@ function ContactPage() {
               <div className="grid place-items-center w-12 h-12 rounded-full bg-gradient-gold text-primary-foreground shrink-0">
                 <Icon className="w-5 h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-xs uppercase tracking-[0.25em] text-primary mb-1">{label}</div>
-                <div className="text-foreground/90">{value}</div>
+                <div className="text-foreground/90 break-words">{value}</div>
               </div>
             </a>
           ))}
 
           <div className="rounded-2xl overflow-hidden border border-border aspect-[16/10]">
             <iframe
-              title="Lagos map"
-              src="https://www.google.com/maps?q=Lekki+Phase+1+Lagos&output=embed"
+              title="Office map"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(SITE.headquarters.value)}&output=embed`}
               className="w-full h-full grayscale-[40%] contrast-110"
               loading="lazy"
             />

@@ -5,10 +5,28 @@ export const SITE = {
   tagline: "Excellence in Every Endeavour",
   description:
     "A premium Nigerian conglomerate delivering luxury furniture, world-class fishery, modern piggery and elite laundry services.",
-  phone: "+234 800 000 0000",
-  whatsapp: "2348000000000",
-  email: "hello@monarchsmega.ng",
-  address: "Plot 12, Admiralty Way, Lekki Phase 1, Lagos, Nigeria",
+  phone: "+234 803 307 3957",
+  whatsapp: "2348033073957",
+  email: "mordecaienoidem033@gmail.com",
+  address:
+    "#1 Etok Enoidem Street, Utu Ikot Eboro, Etim Ekpo LGA, Akwa Ibom State",
+  headquarters: {
+    label: "Headquarters",
+    value:
+      "#1 Etok Enoidem Street, Utu Ikot Eboro, Etim Ekpo LGA, Akwa Ibom State",
+  },
+  branches: [
+    {
+      label: "Eket Branch I",
+      value:
+        "Uyo–Etinan Road, Okon, opposite Gas Filling Station, Eket, Akwa Ibom State",
+    },
+    {
+      label: "Eket Branch II",
+      value:
+        "Ikot Udoma / Ikot Ibiok Road, beside Excellent Secondary School, Eket, Akwa Ibom State",
+    },
+  ],
   socials: {
     instagram: "https://instagram.com",
     facebook: "https://facebook.com",
