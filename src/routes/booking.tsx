@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { ArrowRight, Check, Calendar as CalendarIcon } from "lucide-react";
-import { SERVICES, type ServiceSlug } from "@/lib/site";
+import { SERVICES, SITE, type ServiceSlug } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 import { toast } from "sonner";
 
