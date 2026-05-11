@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { ArrowRight, Check, Calendar as CalendarIcon } from "lucide-react";
-import { SERVICES, type ServiceSlug } from "@/lib/site";
+import { SERVICES, SITE, type ServiceSlug } from "@/lib/site";
 import { IMAGES } from "@/lib/images";
 import { toast } from "sonner";
 
@@ -55,16 +55,36 @@ function BookingPage() {
 
   const activeService = SERVICES.find((s) => s.slug === form.service)!;
 
+  const buildWhatsAppUrl = () => {
+    const lines = [
+      `*New Booking — ${SITE.name}*`,
+      ``,
+      `*Service:* ${activeService.name}`,
+      `*Name:* ${form.name}`,
+      `*Email:* ${form.email}`,
+      `*Phone:* ${form.phone}`,
+      `*Date:* ${form.date}`,
+      `*Time:* ${form.time || "Any"}`,
+      `*Quantity / Size:* ${form.quantity || "—"}`,
+      `*Address:* ${form.address || "—"}`,
+      form.notes ? `*Notes:* ${form.notes}` : null,
+    ].filter(Boolean).join("\n");
+    return `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(lines)}`;
+  };
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.phone || !form.date) {
       toast.error("Please complete the required fields.");
       return;
     }
-    // Placeholder — wire to backend / email service.
     console.log("Booking:", form);
     setSubmitted(true);
-    toast.success("Booking received — we'll be in touch shortly.");
+    toast.success("Booking received — opening WhatsApp to send details.");
+    // Auto-open WhatsApp with prefilled booking details
+    if (typeof window !== "undefined") {
+      window.open(buildWhatsAppUrl(), "_blank", "noopener,noreferrer");
+    }
   };
 
   if (submitted) {
@@ -79,12 +99,26 @@ function BookingPage() {
           <span className="text-primary">{form.phone}</span> within 24 hours to finalise your{" "}
           <span className="text-primary">{activeService.name}</span> booking for {form.date}.
         </p>
-        <a
-          href="/"
-          className="mt-10 inline-flex px-8 py-4 bg-gradient-gold text-primary-foreground rounded-full text-xs uppercase tracking-[0.3em] shadow-gold"
-        >
-          Back to Home
-        </a>
+        <p className="mt-4 text-sm text-muted-foreground">
+          If WhatsApp didn't open automatically, tap the button below to send your booking details.
+        </p>
+        <div className="mt-10 flex flex-wrap gap-4 justify-center">
+          <a
+            href={buildWhatsAppUrl()}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex px-8 py-4 rounded-full text-xs uppercase tracking-[0.3em] text-white shadow-elegant"
+            style={{ backgroundColor: "#25D366" }}
+          >
+            Send to WhatsApp
+          </a>
+          <a
+            href="/"
+            className="inline-flex px-8 py-4 bg-gradient-gold text-primary-foreground rounded-full text-xs uppercase tracking-[0.3em] shadow-gold"
+          >
+            Back to Home
+          </a>
+        </div>
       </section>
     );
   }
