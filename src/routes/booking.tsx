@@ -14,7 +14,7 @@ export const Route = createFileRoute("/booking")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Book a Service — Monarch's Mega Resources" },
+      { title: "Book a Service — Monarch's Mega Ventures" },
       { name: "description", content: "Book furniture, fishery, piggery, or laundry services online. Quick form, instant confirmation." },
       { property: "og:title", content: "Book Now — Monarch's" },
     ],

@@ -13,7 +13,7 @@ export const Route = createFileRoute("/services/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.service.name} — Monarch's Mega Resources` },
+          { title: `${loaderData.service.name} — Monarch's Mega Ventures` },
           { name: "description", content: loaderData.service.description },
           { property: "og:title", content: `${loaderData.service.name} — Monarch's` },
           { property: "og:description", content: loaderData.service.description },

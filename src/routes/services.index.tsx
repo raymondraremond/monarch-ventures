@@ -9,7 +9,7 @@ export const Route = createFileRoute("/services/")({
     meta: [
       { title: "Services — Furniture, Fishery, Piggery & Laundry | Monarch's" },
       { name: "description", content: "Explore our four divisions: bespoke furniture, modern fishery, ethical piggery, and hotel-grade laundry services." },
-      { property: "og:title", content: "Our Services — Monarch's Mega Resources" },
+      { property: "og:title", content: "Our Services — Monarch's Mega Ventures" },
     ],
   }),
   component: ServicesIndex,
