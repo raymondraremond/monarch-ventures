@@ -20,7 +20,7 @@ export function SectionHeading({
           <span className="h-px w-10 bg-primary" />
         </div>
       )}
-      <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">{title}</h2>
+      <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1]">{title}</h2>
       {description && (
         <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
           {description}

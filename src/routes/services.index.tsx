@@ -47,7 +47,7 @@ function ServicesIndex() {
             </Link>
             <div className="[direction:ltr]">
               <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">0{i + 1} — {s.accent}</div>
-              <h2 className="font-display text-4xl md:text-5xl mb-6">{s.name}</h2>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl mb-6">{s.name}</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">{s.description}</p>
               <ul className="space-y-2 mb-8">
                 {s.bullets.map((b) => (
