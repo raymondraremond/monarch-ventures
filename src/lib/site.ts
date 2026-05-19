@@ -1,8 +1,7 @@
 export const SITE = {
-  name: "Monarch's Mega Ventures",
+  name: "Monarch's Mega Resources",
   shortName: "Monarch's",
-  legal: "Monarch's Mega Ventures Nigeria Limited",
-  ceo: "Mordecai Saturday Enoidem",
+  legal: "Monarch's Mega Resources Nigeria Limited",
   tagline: "Excellence in Every Endeavour",
   description:
     "A premium Nigerian conglomerate delivering luxury furniture, world-class fishery, modern piggery and elite laundry services.",
@@ -63,7 +62,7 @@ export const SERVICES: Service[] = [
       "Nationwide delivery & installation",
     ],
     tiers: [
-      { name: "Essential", price: "₦450,000", features: ["1 statement piece", "Standard finish", "Akwa Ibom delivery"] },
+      { name: "Essential", price: "₦450,000", features: ["1 statement piece", "Standard finish", "Lagos delivery"] },
       { name: "Signature", price: "₦1,250,000", features: ["Full room set", "Premium fabrics", "White-glove install"] },
       { name: "Atelier", price: "Bespoke", features: ["End-to-end interior", "Imported materials", "Lifetime care"] },
     ],

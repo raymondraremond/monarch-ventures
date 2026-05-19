@@ -9,7 +9,7 @@ export const Route = createFileRoute("/services/")({
     meta: [
       { title: "Services — Furniture, Fishery, Piggery & Laundry | Monarch's" },
       { name: "description", content: "Explore our four divisions: bespoke furniture, modern fishery, ethical piggery, and hotel-grade laundry services." },
-      { property: "og:title", content: "Our Services — Monarch's Mega Ventures" },
+      { property: "og:title", content: "Our Services — Monarch's Mega Resources" },
     ],
   }),
   component: ServicesIndex,
@@ -47,7 +47,7 @@ function ServicesIndex() {
             </Link>
             <div className="[direction:ltr]">
               <div className="text-xs uppercase tracking-[0.3em] text-primary mb-4">0{i + 1} — {s.accent}</div>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl mb-6">{s.name}</h2>
+              <h2 className="font-display text-4xl md:text-5xl mb-6">{s.name}</h2>
               <p className="text-muted-foreground leading-relaxed mb-6">{s.description}</p>
               <ul className="space-y-2 mb-8">
                 {s.bullets.map((b) => (

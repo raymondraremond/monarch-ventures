@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Monarch's Mega Ventures — Luxury Furniture, Fishery, Piggery & Laundry in Akwa Ibom" },
+      { title: "Monarch's Mega Resources — Luxury Furniture, Fishery, Piggery & Laundry in Nigeria" },
       { name: "description", content: "Premium Nigerian conglomerate offering bespoke furniture, modern aquaculture, ethical piggery and hotel-grade laundry services." },
     ],
   }),
@@ -61,7 +61,7 @@ function Hero() {
             <span className="h-px w-12 bg-primary" />
             <span className="text-xs uppercase tracking-[0.35em] text-primary">{active.accent}</span>
           </div>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1] reveal reveal-delay-1">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] reveal reveal-delay-1">
             Excellence
             <br />
             in <span className="text-gradient-gold italic">every</span> endeavour.
@@ -196,14 +196,14 @@ function Why() {
     { title: "Heritage of craft", body: "A decade-plus of refined craftsmanship across furniture, food and care." },
     { title: "Integrated services", body: "One trusted partner for premium products and services across four sectors." },
     { title: "Quality without compromise", body: "Materials, processes and people held to a single uncompromising standard." },
-    { title: "Rooted in Akwa Ibom", body: "Built by Nigerians for the most demanding clients across Akwa Ibom and beyond." },
+    { title: "Made for Nigeria", body: "Built by Nigerians for the most demanding clients in Lagos and beyond." },
   ];
   return (
     <section className="container-luxe py-24 md:py-32 grid lg:grid-cols-2 gap-16 items-start">
       <div className="lg:sticky lg:top-32">
         <SectionHeading
           eyebrow="Why Monarch's"
-          title={<>The new standard of <span className="text-gradient-gold italic">Akwa Ibom luxury</span>.</>}
+          title={<>The new standard of <span className="text-gradient-gold italic">Nigerian luxury</span>.</>}
           description="We exist to prove that world-class can be home-grown. Every division operates with the same obsession: an immaculate experience, end to end."
         />
         <Link
@@ -231,9 +231,9 @@ function Why() {
 
 function Testimonials() {
   const list = [
-    { quote: "Monarch's transformed our boutique hotel laundry. Immaculate finishes, never a missed pickup.", name: "Adaeze O.", role: "GM, Uyo Boutique Hotels" },
-    { quote: "The custom furniture for our penthouse is genuinely world-class. Worth every Naira.", name: "Tunde A.", role: "Architect, Uyo" },
-    { quote: "Our restaurants now run on Monarch's fish supply. Fresh, on-time, traceable.", name: "Chiamaka N.", role: "Founder, Sage Eket" },
+    { quote: "Monarch's transformed our boutique hotel laundry. Immaculate finishes, never a missed pickup.", name: "Adaeze O.", role: "GM, Eko Boutique Hotels" },
+    { quote: "The custom furniture for our penthouse is genuinely world-class. Worth every Naira.", name: "Tunde A.", role: "Architect, Lagos" },
+    { quote: "Our restaurants now run on Monarch's fish supply. Fresh, on-time, traceable.", name: "Chiamaka N.", role: "Founder, Sage Lagos" },
   ];
   return (
     <section className="container-luxe py-24 md:py-32">

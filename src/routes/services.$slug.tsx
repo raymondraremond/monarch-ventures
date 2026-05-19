@@ -13,7 +13,7 @@ export const Route = createFileRoute("/services/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.service.name} — Monarch's Mega Ventures` },
+          { title: `${loaderData.service.name} — Monarch's Mega Resources` },
           { name: "description", content: loaderData.service.description },
           { property: "og:title", content: `${loaderData.service.name} — Monarch's` },
           { property: "og:description", content: loaderData.service.description },
@@ -46,7 +46,7 @@ function ServiceDetail() {
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero-overlay)" }} />
         <div className="relative z-10 container-luxe h-full flex flex-col justify-end pb-16">
           <div className="text-xs uppercase tracking-[0.35em] text-primary mb-4">{service.accent}</div>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl max-w-4xl leading-[1]">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl max-w-4xl leading-[0.95]">
             {service.name}.
           </h1>
           <p className="mt-6 text-lg text-foreground/85 max-w-2xl">{service.short}</p>
@@ -84,7 +84,7 @@ function ServiceDetail() {
       <section className="border-y border-border bg-card/30">
         <div className="container-luxe py-24">
           <div className="text-xs uppercase tracking-[0.3em] text-primary mb-3">Pricing</div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl mb-12">Transparent tiers.</h2>
+          <h2 className="font-display text-4xl md:text-5xl mb-12">Transparent tiers.</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {service.tiers.map((tier, i) => (
               <div

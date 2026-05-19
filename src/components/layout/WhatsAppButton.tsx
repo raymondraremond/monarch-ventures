@@ -2,7 +2,7 @@ import { SITE } from "@/lib/site";
 
 export function WhatsAppButton() {
   const href = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(
-    "Hello Monarch's Mega Ventures, I'd like to enquire about your services."
+    "Hello Monarch's Mega Resources, I'd like to enquire about your services."
   )}`;
   return (
     <a

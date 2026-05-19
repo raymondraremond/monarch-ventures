@@ -15,7 +15,7 @@ export function Footer() {
             <div>
               <div className="font-display">{SITE.shortName}</div>
               <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                Mega Ventures
+                Mega Resources
               </div>
             </div>
           </div>
