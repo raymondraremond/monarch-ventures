@@ -8,8 +8,8 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Monarch's Mega Resources — Lagos, Nigeria" },
-      { name: "description", content: "Reach Monarch's Mega Resources Nigeria Limited. Lagos office, WhatsApp, email, and contact form." },
+      { title: "Contact Monarch's Mega Ventures — Akwa Ibom, Nigeria" },
+      { name: "description", content: "Reach Monarch's Mega Ventures Nigeria Limited. Headquarters in Etim Ekpo LGA with branches in Eket — WhatsApp, email, and contact form." },
       { property: "og:title", content: "Contact — Monarch's" },
     ],
   }),

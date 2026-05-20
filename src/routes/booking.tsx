@@ -14,7 +14,7 @@ export const Route = createFileRoute("/booking")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Book a Service — Monarch's Mega Resources" },
+      { title: "Book a Service — Monarch's Mega Ventures" },
       { name: "description", content: "Book furniture, fishery, piggery, or laundry services online. Quick form, instant confirmation." },
       { property: "og:title", content: "Book Now — Monarch's" },
     ],
@@ -93,7 +93,7 @@ function BookingPage() {
         <div className="mx-auto w-20 h-20 rounded-full bg-gradient-gold grid place-items-center mb-8 shadow-gold">
           <Check className="w-10 h-10 text-primary-foreground" />
         </div>
-        <h1 className="font-display text-4xl md:text-5xl mb-4">Booking confirmed.</h1>
+        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl mb-4">Booking confirmed.</h1>
         <p className="text-muted-foreground">
           Thank you, <span className="text-foreground">{form.name}</span>. Our team will reach you on{" "}
           <span className="text-primary">{form.phone}</span> within 24 hours to finalise your{" "}
@@ -127,7 +127,7 @@ function BookingPage() {
     <>
       <section className="container-luxe pt-12 pb-12">
         <div className="text-xs uppercase tracking-[0.35em] text-primary mb-4">Booking</div>
-        <h1 className="font-display text-5xl md:text-6xl max-w-3xl">
+        <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-3xl">
           Reserve your <span className="text-gradient-gold italic">Monarch's</span> service.
         </h1>
         <p className="mt-6 text-muted-foreground max-w-2xl">
