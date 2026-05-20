@@ -6,10 +6,10 @@ import { SITE } from "@/lib/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Monarch's Mega Resources — Our Story, Vision & Team" },
-      { name: "description", content: "Discover the story, vision and values behind Monarch's Mega Resources Nigeria Limited — a Nigerian house of premium services." },
-      { property: "og:title", content: "About Monarch's Mega Resources" },
-      { property: "og:description", content: "A Nigerian house of premium services. Discover our story, vision and team." },
+      { title: "About Monarch's Mega Ventures — Our Story, Vision & Team" },
+      { name: "description", content: "Discover the story, vision and values behind Monarch's Mega Ventures Nigeria Limited — an Akwa Ibom house of premium services." },
+      { property: "og:title", content: "About Monarch's Mega Ventures" },
+      { property: "og:description", content: "An Akwa Ibom house of premium services. Discover our story, vision and team." },
     ],
   }),
   component: AboutPage,
@@ -23,7 +23,7 @@ function AboutPage() {
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero-overlay)" }} />
         <div className="relative z-10 container-luxe h-full flex flex-col justify-end pb-16">
           <div className="text-xs uppercase tracking-[0.35em] text-primary mb-4">About Us</div>
-          <h1 className="font-display text-5xl md:text-7xl max-w-3xl">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl max-w-3xl">
             A Nigerian house of <span className="text-gradient-gold italic">premium</span> services.
           </h1>
         </div>
@@ -31,13 +31,13 @@ function AboutPage() {
 
       <section className="container-luxe py-24 grid lg:grid-cols-2 gap-16">
         <div>
-          <SectionHeading eyebrow="Our Story" title={<>Born in Lagos. Built for excellence.</>} />
+          <SectionHeading eyebrow="Our Story" title={<>Born in Akwa Ibom. Built for excellence.</>} />
           <div className="mt-8 space-y-5 text-muted-foreground leading-relaxed">
             <p>
-              {SITE.legal} began with a simple belief: world-class quality should not be imported. From a single furniture workshop in Lagos, Monarch's grew into a house of four disciplined divisions — furniture, fishery, piggery and laundry — each obsessing over the same standard.
+              {SITE.legal} began with a simple belief: world-class quality should not be imported. From a single furniture workshop in Etim Ekpo LGA, Monarch's grew into a house of four disciplined divisions — furniture, fishery, piggery and laundry — each obsessing over the same standard.
             </p>
             <p>
-              Today, our pieces sit in penthouses across Ikoyi, our fish supplies the city's finest kitchens, our pork feeds restaurant groups nationwide, and our laundry keeps boutique hotels immaculate.
+              Today, our pieces sit in homes across Akwa Ibom and beyond, our fish supplies the region's finest kitchens, our pork feeds restaurants nationwide, and our laundry keeps hotels and households immaculate.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ function AboutPage() {
         <SectionHeading eyebrow="Leadership" title={<>The minds behind <span className="text-gradient-gold italic">Monarch's</span>.</>} align="center" />
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { n: "Adewale Monarch", r: "Founder & CEO" },
+            { n: SITE.ceo, r: "Founder & CEO" },
             { n: "Ngozi Eze", r: "Head of Design — Furniture" },
             { n: "Ifeanyi Okafor", r: "Director — Aquaculture & Piggery" },
             { n: "Folake Bello", r: "Director — Laundry & Hospitality" },

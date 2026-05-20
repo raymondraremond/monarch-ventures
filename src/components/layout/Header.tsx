@@ -39,7 +39,7 @@ export function Header() {
           </span>
           <div className="leading-tight">
             <div className="font-display text-base tracking-wide">{SITE.shortName}</div>
-            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Mega Resources</div>
+            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Mega Ventures</div>
           </div>
         </Link>
 
