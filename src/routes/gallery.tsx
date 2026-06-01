@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { X } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { GALLERY, CATEGORIES, type GalleryCategory } from "@/lib/gallery";
@@ -15,14 +15,25 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
+const PAGE_SIZE = 18;
+
 function GalleryPage() {
   const [filter, setFilter] = useState<GalleryCategory | "all">("all");
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
   const items = useMemo(
     () => (filter === "all" ? GALLERY : GALLERY.filter((g) => g.category === filter)),
     [filter]
   );
+
+  // Reset pagination when filter changes
+  useEffect(() => {
+    setVisible(PAGE_SIZE);
+  }, [filter]);
+
+  const shown = items.slice(0, visible);
+  const hasMore = visible < items.length;
 
   return (
     <>
@@ -53,8 +64,8 @@ function GalleryPage() {
         </div>
       </section>
 
-      <section className="container-luxe pb-24 columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
-        {items.map((it, i) => (
+      <section className="container-luxe pb-12 columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+        {shown.map((it, i) => (
           <figure
             key={it.src + i}
             onClick={() => setLightbox(it.src)}
@@ -64,17 +75,35 @@ function GalleryPage() {
               src={it.src}
               alt={it.title}
               loading="lazy"
+              decoding="async"
               className={`w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 ${
                 it.ratio === "tall" ? "aspect-[3/4]" : it.ratio === "square" ? "aspect-square" : "aspect-[4/3]"
               }`}
             />
-            <figcaption className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-onyx via-onyx/40 to-transparent">
+            {/* Desktop: caption on hover */}
+            <figcaption className="hidden md:flex absolute inset-0 flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-onyx via-onyx/40 to-transparent">
               <div className="text-[10px] uppercase tracking-[0.3em] text-primary capitalize">{it.category}</div>
               <div className="font-display text-xl mt-1">{it.title}</div>
+            </figcaption>
+            {/* Mobile: caption always visible */}
+            <figcaption className="md:hidden absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-onyx via-onyx/70 to-transparent">
+              <div className="text-[9px] uppercase tracking-[0.3em] text-primary capitalize">{it.category}</div>
+              <div className="font-display text-base mt-0.5 leading-tight">{it.title}</div>
             </figcaption>
           </figure>
         ))}
       </section>
+
+      {hasMore && (
+        <div className="container-luxe pb-24 flex justify-center">
+          <button
+            onClick={() => setVisible((v) => v + PAGE_SIZE)}
+            className="px-8 py-4 rounded-full border border-primary/40 text-xs uppercase tracking-[0.3em] text-foreground hover:bg-gradient-gold hover:text-primary-foreground hover:border-transparent transition-all duration-300"
+          >
+            Load more ({items.length - visible} remaining)
+          </button>
+        </div>
+      )}
 
       {lightbox && (
         <div
