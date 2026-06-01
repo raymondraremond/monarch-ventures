@@ -24,8 +24,15 @@ function ContactPage() {
       toast.error("Please complete the required fields.");
       return;
     }
-    console.log("Contact:", form);
-    toast.success("Message sent. We'll respond within 24 hours.");
+    const text =
+      `New enquiry from ${SITE.brand} website\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Subject: ${form.subject || "—"}\n\n` +
+      `Message:\n${form.message}`;
+    const url = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    toast.success("Opening WhatsApp to send your message…");
     setForm({ name: "", email: "", subject: "", message: "" });
   };
 
