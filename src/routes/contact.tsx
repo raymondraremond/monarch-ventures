@@ -25,7 +25,7 @@ function ContactPage() {
       return;
     }
     const text =
-      `New enquiry from ${SITE.brand} website\n\n` +
+      `New enquiry from ${SITE.name} website\n\n` +
       `Name: ${form.name}\n` +
       `Email: ${form.email}\n` +
       `Subject: ${form.subject || "—"}\n\n` +
@@ -89,6 +89,9 @@ function ContactPage() {
 
         <form onSubmit={submit} className="rounded-2xl border border-border bg-card p-8 md:p-12 space-y-6 self-start">
           <h2 className="font-display text-3xl">Send us a message</h2>
+          <p className="text-sm text-muted-foreground -mt-3">
+            Sends instantly to our WhatsApp — we typically reply within minutes.
+          </p>
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label="Name *" value={form.name} onChange={(v) => setForm((f) => ({ ...f, name: v }))} />
             <Field label="Email *" type="email" value={form.email} onChange={(v) => setForm((f) => ({ ...f, email: v }))} />
