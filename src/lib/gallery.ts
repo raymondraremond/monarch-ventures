@@ -167,7 +167,6 @@ import piggery6 from "@/assets/gallery/piggery-06.jpg";
 
 import laundry1 from "@/assets/gallery/laundry-1.jpg";
 import laundry2 from "@/assets/gallery/laundry-2.jpg";
-import laundry3 from "@/assets/gallery/laundry-3.jpg";
 import laundry4 from "@/assets/gallery/laundry-4.jpg";
 import laundry5 from "@/assets/gallery/laundry-5.jpg";
 
@@ -352,7 +351,6 @@ export const GALLERY: GalleryImage[] = [
   // ── Laundry ─────────────────────────────────────────────────
   { src: laundry1, title: "Laundry Service Floor", category: "laundry", ratio: "short" },
   { src: laundry2, title: "Industrial Washing Machines", category: "laundry", ratio: "tall" },
-  { src: laundry3, title: "Pressing & Ironing", category: "laundry", ratio: "short" },
   { src: laundry4, title: "Folded & Ready", category: "laundry", ratio: "square" },
   { src: laundry5, title: "Drying Operations", category: "laundry", ratio: "tall" },
 ];
