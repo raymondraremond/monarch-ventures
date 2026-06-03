@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { z } from "zod";
 import { ArrowRight, Check, Calendar as CalendarIcon } from "lucide-react";
 import { SERVICES, SITE, type ServiceSlug } from "@/lib/site";
@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 const searchSchema = z.object({
   service: z.enum(["furniture", "fishery", "piggery", "laundry"]).optional(),
+  selected: z.string().optional(),
 });
 
 export const Route = createFileRoute("/booking")({
@@ -50,6 +51,10 @@ function BookingPage() {
     notes: "",
   });
 
+  const selectedItems = useMemo(() => {
+    return search.selected?.split("|").map((item) => decodeURIComponent(item)).filter(Boolean) ?? [];
+  }, [search.selected]);
+
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
 
@@ -68,6 +73,7 @@ function BookingPage() {
       `*Quantity / Size:* ${form.quantity || "—"}`,
       `*Address:* ${form.address || "—"}`,
       form.notes ? `*Notes:* ${form.notes}` : null,
+      selectedItems.length ? `*Selected items:* ${selectedItems.join(", ")}` : null,
     ].filter(Boolean).join("\n");
     return `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(lines)}`;
   };
@@ -256,6 +262,16 @@ function BookingPage() {
             <div className="text-xs uppercase tracking-[0.3em] text-primary mb-2">{activeService.accent}</div>
             <h3 className="font-display text-2xl mb-3">{activeService.name}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">{activeService.short}</p>
+            {selectedItems.length > 0 && (
+              <div className="mt-6 rounded-2xl border border-border bg-background/50 p-5">
+                <div className="text-xs uppercase tracking-[0.25em] text-primary mb-3">Selected items</div>
+                <ul className="space-y-2 text-sm text-foreground">
+                  {selectedItems.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </aside>
       </section>
