@@ -128,7 +128,8 @@ function ContactForm() {
           name="message"
           required
           rows={6}
-          spellCheck={true}
+          spellCheck={false}
+          data-gramm="false"
           className="w-full px-5 py-4 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition-colors text-sm"
         />
       </label>
@@ -152,6 +153,7 @@ function Field({ label, name, type = "text", autoComplete, required }: { label: 
         name={name}
         required={required}
         autoComplete={autoComplete}
+        data-gramm="false"
         className="w-full px-5 py-4 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition-colors text-sm"
       />
     </label>
