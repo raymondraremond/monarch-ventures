@@ -75,22 +75,27 @@ function ContactPage() {
 }
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    if (!name || !email || !message) {
       toast.error("Please complete the required fields.");
       return;
     }
 
     const text =
       `New enquiry from ${SITE.name} website\n\n` +
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Subject: ${form.subject || "—"}\n\n` +
-      `Message:\n${form.message}`;
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Subject: ${subject || "—"}\n\n` +
+      `Message:\n${message}`;
     const url = `https://api.whatsapp.com/send?phone=${SITE.whatsapp}&text=${encodeURIComponent(text)}`;
 
     setSubmitting(true);
@@ -102,7 +107,7 @@ function ContactForm() {
     }
 
     toast.success("Opening WhatsApp to send your message…");
-    setForm({ name: "", email: "", subject: "", message: "" });
+    e.currentTarget.reset();
     setSubmitting(false);
   };
 
@@ -113,15 +118,15 @@ function ContactForm() {
         Sends instantly to our WhatsApp — we typically reply within minutes.
       </p>
       <div className="grid sm:grid-cols-2 gap-5">
-        <Field label="Name *" autoComplete="name" value={form.name} onChange={(v) => setForm((f) => ({ ...f, name: v }))} />
-        <Field label="Email *" type="email" autoComplete="email" value={form.email} onChange={(v) => setForm((f) => ({ ...f, email: v }))} />
+        <Field label="Name *" name="name" autoComplete="name" required />
+        <Field label="Email *" name="email" type="email" autoComplete="email" required />
       </div>
-      <Field label="Subject" autoComplete="subject" value={form.subject} onChange={(v) => setForm((f) => ({ ...f, subject: v }))} />
+      <Field label="Subject" name="subject" autoComplete="subject" />
       <label className="block">
         <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2 block">Message *</span>
         <textarea
-          value={form.message}
-          onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+          name="message"
+          required
           rows={6}
           spellCheck={true}
           className="w-full px-5 py-4 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition-colors text-sm"
@@ -138,15 +143,15 @@ function ContactForm() {
   );
 }
 
-function Field({ label, value, onChange, type = "text", autoComplete }: { label: string; value: string; onChange: (v: string) => void; type?: string; autoComplete?: string }) {
+function Field({ label, name, type = "text", autoComplete, required }: { label: string; name: string; type?: string; autoComplete?: string; required?: boolean }) {
   return (
     <label className="block">
       <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2 block">{label}</span>
       <input
         type={type}
-        value={value}
+        name={name}
+        required={required}
         autoComplete={autoComplete}
-        onChange={(e) => onChange(e.target.value)}
         className="w-full px-5 py-4 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition-colors text-sm"
       />
     </label>
