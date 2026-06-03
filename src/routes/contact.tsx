@@ -17,36 +17,6 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [submitting, setSubmitting] = useState(false);
-
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error("Please complete the required fields.");
-      return;
-    }
-
-    const text =
-      `New enquiry from ${SITE.name} website\n\n` +
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Subject: ${form.subject || "—"}\n\n` +
-      `Message:\n${form.message}`;
-    const url = `https://api.whatsapp.com/send?phone=${SITE.whatsapp}&text=${encodeURIComponent(text)}`;
-
-    setSubmitting(true);
-    if (typeof window !== "undefined") {
-      const opened = window.open(url, "_blank");
-      if (!opened) {
-        window.location.assign(url);
-      }
-    }
-
-    toast.success("Opening WhatsApp to send your message…");
-    setForm({ name: "", email: "", subject: "", message: "" });
-  };
-
   return (
     <>
       <section className="container-luxe pt-12 pb-16">
@@ -98,36 +68,73 @@ function ContactPage() {
           </div>
         </div>
 
-        <form onSubmit={submit} className="rounded-2xl border border-border bg-card p-8 md:p-12 space-y-6 self-start">
-          <h2 className="font-display text-3xl">Send us a message</h2>
-          <p className="text-sm text-muted-foreground -mt-3">
-            Sends instantly to our WhatsApp — we typically reply within minutes.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-5">
-            <Field label="Name *" autoComplete="name" value={form.name} onChange={(v) => setForm((f) => ({ ...f, name: v }))} />
-            <Field label="Email *" type="email" autoComplete="email" value={form.email} onChange={(v) => setForm((f) => ({ ...f, email: v }))} />
-          </div>
-          <Field label="Subject" autoComplete="subject" value={form.subject} onChange={(v) => setForm((f) => ({ ...f, subject: v }))} />
-          <label className="block">
-            <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2 block">Message *</span>
-            <textarea
-              value={form.message}
-              onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-              rows={6}
-              spellCheck={true}
-              className="w-full px-5 py-4 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition-colors text-sm"
-            />
-          </label>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-gold text-primary-foreground rounded-full text-xs uppercase tracking-[0.3em] shadow-gold disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            Send Message <Send className="w-4 h-4" />
-          </button>
-        </form>
+        <ContactForm />
       </section>
     </>
+  );
+}
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) {
+      toast.error("Please complete the required fields.");
+      return;
+    }
+
+    const text =
+      `New enquiry from ${SITE.name} website\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Subject: ${form.subject || "—"}\n\n` +
+      `Message:\n${form.message}`;
+    const url = `https://api.whatsapp.com/send?phone=${SITE.whatsapp}&text=${encodeURIComponent(text)}`;
+
+    setSubmitting(true);
+    if (typeof window !== "undefined") {
+      const opened = window.open(url, "_blank");
+      if (!opened) {
+        window.location.assign(url);
+      }
+    }
+
+    toast.success("Opening WhatsApp to send your message…");
+    setForm({ name: "", email: "", subject: "", message: "" });
+    setSubmitting(false);
+  };
+
+  return (
+    <form onSubmit={submit} className="rounded-2xl border border-border bg-card p-8 md:p-12 space-y-6 self-start">
+      <h2 className="font-display text-3xl">Send us a message</h2>
+      <p className="text-sm text-muted-foreground -mt-3">
+        Sends instantly to our WhatsApp — we typically reply within minutes.
+      </p>
+      <div className="grid sm:grid-cols-2 gap-5">
+        <Field label="Name *" autoComplete="name" value={form.name} onChange={(v) => setForm((f) => ({ ...f, name: v }))} />
+        <Field label="Email *" type="email" autoComplete="email" value={form.email} onChange={(v) => setForm((f) => ({ ...f, email: v }))} />
+      </div>
+      <Field label="Subject" autoComplete="subject" value={form.subject} onChange={(v) => setForm((f) => ({ ...f, subject: v }))} />
+      <label className="block">
+        <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2 block">Message *</span>
+        <textarea
+          value={form.message}
+          onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+          rows={6}
+          spellCheck={true}
+          className="w-full px-5 py-4 rounded-xl bg-background border border-border focus:border-primary focus:outline-none transition-colors text-sm"
+        />
+      </label>
+      <button
+        type="submit"
+        disabled={submitting}
+        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-gold text-primary-foreground rounded-full text-xs uppercase tracking-[0.3em] shadow-gold disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        Send Message <Send className="w-4 h-4" />
+      </button>
+    </form>
   );
 }
 
